@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.7.0" />
+    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NLBank.Domain\NLBank.Domain.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Service.Bank\NLBank.Infra.Service.Bank.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Service.Customer\NLBank.Infra.Service.Customer.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Service.Transaction\NLBank.Infra.Service.Transaction.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Services.Account\NLBank.Infra.Service.Account.csproj" />
+  </ItemGroup>
+
+</Project>

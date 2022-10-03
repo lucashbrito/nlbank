@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="Moq" Version="4.18.2" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NLBank.Domain\NLBank.Domain.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.ExternalIntegration.Randomiban\NLBank.Infra.ExternalIntegration.Randomiban.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Repository.Account\NLBank.Infra.Repository.Account.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Repository.Bank\NLBank.Infra.Repository.Bank.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Repository.Customer\NLBank.Infra.Repository.Customer.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Repository.Transaction\NLBank.Infra.Repository.Transaction.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Service.Bank\NLBank.Infra.Service.Bank.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Service.Customer\NLBank.Infra.Service.Customer.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Service.Transaction\NLBank.Infra.Service.Transaction.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Services.Account\NLBank.Infra.Service.Account.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Services\NLBank.Infra.Services.csproj" />
+  </ItemGroup>
+
+</Project>

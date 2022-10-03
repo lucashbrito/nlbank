@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NLBank.Domain\NLBank.Domain.csproj" />
+    <ProjectReference Include="..\NLBank.Infra.Repository.Customer\NLBank.Infra.Repository.Customer.csproj" />
+  </ItemGroup>
+
+</Project>

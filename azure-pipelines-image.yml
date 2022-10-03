@@ -1,0 +1,22 @@
+trigger:
+  branches:
+    include:
+      - master
+      - main
+      - develop
+      
+resources:
+  repositories:
+    - repository: nlbank-templates
+      type: git
+      name: nlbank-templates
+
+variables:
+- template: azure-pipelines/template-variables.yml@nlbank-templates
+
+jobs:
+- template: azure-pipelines/template-azure-pipelines.yml@nlbank-templates
+  parameters:
+    serviceName: 'nlbank-app'
+    imageRepository: 'nlbank'
+    
