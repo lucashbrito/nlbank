@@ -27,7 +27,7 @@ namespace NLBank.Infra.Service.Bank
 
         public async Task<string> CreateIBAN()
         {
-            var bank = await bankRepository.Get();
+            var bank = await bankRepository.Get();            
 
             return new IbanBuilder()
                 .CountryCode(CountryCode.GetCountryCode(bank.Country))

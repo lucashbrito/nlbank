@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using System;
 
 namespace NLBank.Infra.Repository.Account
 {
@@ -13,15 +14,16 @@ namespace NLBank.Infra.Repository.Account
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddDbContext<AccountDatabaseContext>(options =>
-                   options.UseSqlServer(connectionString,
-                    sqlServerOptions =>
-                    {
-                        sqlServerOptions
-                                .MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
-                        sqlServerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
-                    }
-                       ));
+            services.AddDbContext<AccountDatabaseContext>(opt => opt.UseInMemoryDatabase(connectionString));
+
+            //services.AddDbContext<AccountDatabaseContext>(options =>
+            //       options.UseSqlServer(connectionString,
+            //        sqlServerOptions =>
+            //        {
+            //            sqlServerOptions.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+            //            sqlServerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            //        }));
+
             services.AddScoped<IAccountRepository, AccountRepository>();
 
             return services;

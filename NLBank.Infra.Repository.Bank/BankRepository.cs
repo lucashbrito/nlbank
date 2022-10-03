@@ -15,14 +15,15 @@ namespace NLBank.Infra.Repository.Bank
             databaseContext.Banks.Update(bank);
         }
 
-        public async Task<Domain.Bank> GetByBankCodeAsync(string bankCode)
-            => await databaseContext.Banks.FirstOrDefaultAsync(x => x.BankCode == bankCode);
+        public async Task<Domain.Bank> GetByBankCodeAsync(string bankCode)=> new Domain.Bank("BANQ", 0, "NL");
+            //=> await databaseContext.Banks.FirstOrDefaultAsync(x => x.BankCode == bankCode);
 
         public async Task SaveChangesAsync()
         {
             await databaseContext.SaveChangesAsync();
         }
 
-        public async Task<Domain.Bank> Get() => await databaseContext.Banks.FirstOrDefaultAsync();
+        public async Task<Domain.Bank> Get() => new Domain.Bank("BANQ", 0, "NL");
+            //            await databaseContext.Banks.FirstOrDefaultAsync();
     }
 }

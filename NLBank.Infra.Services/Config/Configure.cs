@@ -28,22 +28,24 @@ namespace NLBank.Infra.Service.Transaction.Config
             Mode = RetryMode.Exponential}
             };
 
-            var client = new SecretClient(new Uri(@"https://studies-dev.vault.azure.net/"), new DefaultAzureCredential(), options);
-
+           
             services.AddAccountServices();
             services.AddBankServices();
             services.AddTransactionServices();
             services.AddCustomerServices();
 
-            var account = await client.GetSecretAsync("Repositories--Accounts--ConnectionString");
-            var banks = await client.GetSecretAsync("Repositories--Banks--ConnectionString");
-            var customer = await client.GetSecretAsync("Repositories--Customers--ConnectionString");
-            var transaction = await client.GetSecretAsync("Repositories--Transactions--ConnectionString");
+            //// I created 4 database but I deleted last friday 30-09-2022
+            //var client = new SecretClient(new Uri(@"https://studies-dev.vault.azure.net/"), new DefaultAzureCredential() { }, options);            
+            //var general = await client.GetSecretAsync("Repositories--GeneralDatabase--ConnectionString");
+            //var account = await client.GetSecretAsync("Repositories--Accounts--ConnectionString");
+            //var banks = await client.GetSecretAsync("Repositories--Banks--ConnectionString");
+            //var customer = await client.GetSecretAsync("Repositories--Customers--ConnectionString");
+            //var transaction = await client.GetSecretAsync("Repositories--Transactions--ConnectionString");
 
-            services.AddAccountRepository(account.Value.Value.ToString());
-            services.AddBankRepository(banks.Value.Value.ToString());
-            services.AddCustomerRepository(customer.Value.Value.ToString());
-            services.AddTransactionRepository(transaction.Value.Value.ToString());
+            services.AddAccountRepository("Account");
+            services.AddBankRepository("Bank");
+            services.AddCustomerRepository("Customer");
+            services.AddTransactionRepository("Transaction");
 
             services.AddScoped<ICreateCustomerFacade, CreateCustomerFacade>();
             services.AddScoped<IPutMoneyFacade, PutMoneyFacade>();

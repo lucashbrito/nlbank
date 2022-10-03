@@ -13,15 +13,17 @@ namespace NLBank.Infra.Repository.Transaction
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddDbContext<TransactionDatabaseContext>(options =>
-                  options.UseSqlServer(connectionString,
-                    sqlServerOptions =>
-                    {
-                        sqlServerOptions
-                                .MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
-                        sqlServerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
-                    }
-                       ));
+            services.AddDbContext<TransactionDatabaseContext>(opt => opt.UseInMemoryDatabase(connectionString));
+
+            //services.AddDbContext<TransactionDatabaseContext>(options =>
+            //      options.UseSqlServer(connectionString,
+            //        sqlServerOptions =>
+            //        {
+            //            sqlServerOptions
+            //                    .MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+            //            sqlServerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            //        }
+            //           ));
 
             services.AddScoped<ITransactionRepository, TransactionRepository>();
 

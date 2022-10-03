@@ -13,15 +13,17 @@ namespace NLBank.Infra.Repository.Bank
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddDbContext<BankDatabaseContext>(options =>
-                options.UseSqlServer(connectionString,
-                    sqlServerOptions =>
-                    {
-                        sqlServerOptions
-                                .MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
-                        sqlServerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
-                    }
-                       ));
+            services.AddDbContext<BankDatabaseContext>(opt => opt.UseInMemoryDatabase(connectionString));
+
+            //services.AddDbContext<BankDatabaseContext>(options =>
+            //    options.UseSqlServer(connectionString,
+            //        sqlServerOptions =>
+            //        {
+            //            sqlServerOptions
+            //                    .MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+            //            sqlServerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            //        }
+            //           ));
 
             services.AddScoped<IBankRepository, BankRepository>();
 
